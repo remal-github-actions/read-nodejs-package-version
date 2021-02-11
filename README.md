@@ -1,2 +1,2 @@
-# template-typescript
-Template repository for GitHub typescript actions
+# read-nodejs-package-version
+Read version from package.json
