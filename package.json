@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package",
-  "name": "template-typescript",
+  "name": "read-nodejs-package-version",
   "version": "1.0.0",
   "engines": {
     "node": ">=12"
