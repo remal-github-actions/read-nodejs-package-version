@@ -28,7 +28,9 @@ async function run(): Promise<void> {
             return
         }
 
-        core.setOutput('version', semverVersion.toString())
+        const fullVer = semverVersion.version
+        core.info(`Full version: ${fullVer}`)
+        core.setOutput('version', fullVer)
 
         const prereleaseSuffix: string = (function () {
             const prerelease = semverVersion.prerelease.join('.')
