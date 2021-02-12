@@ -82,7 +82,9 @@ function run() {
                 core.setFailed(`Version isn't a valid semantic version (can't be parsed by semver library): ${version}`);
                 return;
             }
-            core.setOutput('version', semverVersion.toString());
+            const fullVer = semverVersion.version;
+            core.info(`Full version: ${fullVer}`);
+            core.setOutput('version', fullVer);
             const prereleaseSuffix = (function () {
                 const prerelease = semverVersion.prerelease.join('.');
                 return prerelease.length > 0 ? `-${prerelease}` : '';
