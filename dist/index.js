@@ -42,15 +42,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -61,45 +52,43 @@ const path_1 = __importDefault(__nccwpck_require__(5622));
 const preload_1 = __importDefault(__nccwpck_require__(4360));
 const workspacePath_1 = __importDefault(__nccwpck_require__(3948));
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const packageFile = core.getInput('packageFile', { required: true });
-            core.info(`Parsing ${packageFile}`);
-            const packageAbsoluteFile = path_1.default.resolve(workspacePath_1.default, packageFile);
-            const content = fs.readFileSync(packageAbsoluteFile, 'utf8');
-            const packageInfo = JSON.parse(content);
-            const version = packageInfo.version;
-            if (!version) {
-                core.setFailed('Version is not set or empty');
-                return;
-            }
-            const semverVersion = preload_1.default.parse(version);
-            if (semverVersion == null) {
-                core.setFailed(`Version isn't a valid semantic version (can't be parsed by semver library): ${version}`);
-                return;
-            }
-            const fullVer = semverVersion.version;
-            core.info(`Full version: ${fullVer}`);
-            core.setOutput('version', fullVer);
-            const prereleaseSuffix = (function () {
-                const prerelease = semverVersion.prerelease.join('.');
-                return prerelease.length > 0 ? `-${prerelease}` : '';
-            })();
-            const patchVer = [semverVersion.major, semverVersion.minor, semverVersion.patch].join('.') + prereleaseSuffix;
-            core.info(`Patch version: ${patchVer}`);
-            core.setOutput('patchVersion', patchVer);
-            const minorVer = [semverVersion.major, semverVersion.minor].join('.') + prereleaseSuffix;
-            core.info(`Minor version: ${minorVer}`);
-            core.setOutput('minorVersion', minorVer);
-            const majorVer = [semverVersion.major].join('.') + prereleaseSuffix;
-            core.info(`Major version: ${majorVer}`);
-            core.setOutput('majorVersion', majorVer);
+async function run() {
+    try {
+        const packageFile = core.getInput('packageFile', { required: true });
+        core.info(`Parsing ${packageFile}`);
+        const packageAbsoluteFile = path_1.default.resolve(workspacePath_1.default, packageFile);
+        const content = fs.readFileSync(packageAbsoluteFile, 'utf8');
+        const packageInfo = JSON.parse(content);
+        const version = packageInfo.version;
+        if (!version) {
+            core.setFailed('Version is not set or empty');
+            return;
         }
-        catch (error) {
-            core.setFailed(error);
+        const semverVersion = preload_1.default.parse(version);
+        if (semverVersion == null) {
+            core.setFailed(`Version isn't a valid semantic version (can't be parsed by semver library): ${version}`);
+            return;
         }
-    });
+        const fullVer = semverVersion.version;
+        core.info(`Full version: ${fullVer}`);
+        core.setOutput('version', fullVer);
+        const prereleaseSuffix = (function () {
+            const prerelease = semverVersion.prerelease.join('.');
+            return prerelease.length > 0 ? `-${prerelease}` : '';
+        })();
+        const patchVer = [semverVersion.major, semverVersion.minor, semverVersion.patch].join('.') + prereleaseSuffix;
+        core.info(`Patch version: ${patchVer}`);
+        core.setOutput('patchVersion', patchVer);
+        const minorVer = [semverVersion.major, semverVersion.minor].join('.') + prereleaseSuffix;
+        core.info(`Minor version: ${minorVer}`);
+        core.setOutput('minorVersion', minorVer);
+        const majorVer = [semverVersion.major].join('.') + prereleaseSuffix;
+        core.info(`Major version: ${majorVer}`);
+        core.setOutput('majorVersion', majorVer);
+    }
+    catch (error) {
+        core.setFailed(error);
+    }
 }
 //noinspection JSIgnoredPromiseFromCall
 run();
