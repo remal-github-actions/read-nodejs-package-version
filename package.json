@@ -19,7 +19,7 @@
     "semver": "7.3.7"
   },
   "devDependencies": {
-    "@tsconfig/node12": "1.0.10",
+    "@tsconfig/node12": "1.0.11",
     "@types/node": "16.11.41",
     "@types/semver": "7.3.10",
     "@typescript-eslint/parser": "5.28.0",
