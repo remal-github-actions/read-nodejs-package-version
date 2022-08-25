@@ -86,7 +86,7 @@ async function run() {
         core.setOutput('majorVersion', majorVer);
     }
     catch (error) {
-        core.setFailed(error);
+        core.setFailed(error instanceof Error ? error : error.toString());
     }
 }
 //noinspection JSIgnoredPromiseFromCall
