@@ -53,8 +53,14 @@ jobs:
         npm run build
 
 
+    # $$$sync-with-template-modifiable: validation $$$
+
+
     - name: Run current action
       uses: ./
+
+
+    # $$$sync-with-template-modifiable-end$$$
 
 
     - name: Push back
