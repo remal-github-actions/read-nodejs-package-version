@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@tsconfig/node12": "1.0.11",
-    "@types/node": "16.11.57",
+    "@types/node": "16.11.58",
     "@types/semver": "7.3.12",
     "@typescript-eslint/parser": "5.36.2",
     "@vercel/ncc": "0.34.0",
