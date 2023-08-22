@@ -20,7 +20,7 @@
     "semver": "7.5.4"
   },
   "devDependencies": {
-    "@tsconfig/node16": "16.1.0",
+    "@tsconfig/node16": "16.1.1",
     "@types/node": "16.18.41",
     "@types/semver": "7.5.0",
     "@typescript-eslint/parser": "6.4.1",
