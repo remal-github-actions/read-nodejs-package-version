@@ -1298,10 +1298,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node20@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@tsconfig/node20@npm:1.0.0"
-  checksum: bb2f9ffeb73d1317f3ebfb260109b5e382cab228da2bc8b6202979605820a771fa7cf7a8defc19c9c9ae9d91d6da7b586ca3d9a1e7e1547af6a5118c462bacef
+"@tsconfig/node20@npm:20.1.2":
+  version: 20.1.2
+  resolution: "@tsconfig/node20@npm:20.1.2"
+  checksum: fc126e15f0817bd328c15bd6be7972f01ef4d55ceb493c7a83ccb9dd545e39f218711f330e3df4072b116b11180c07943da2b2bfcd7adc58414cb586db52a4c8
   languageName: node
   linkType: hard
 
@@ -6057,7 +6057,7 @@ __metadata:
   resolution: "read-nodejs-package-version@workspace:."
   dependencies:
     "@actions/core": 1.10.1
-    "@tsconfig/node20": 1.0.0
+    "@tsconfig/node20": 20.1.2
     "@types/node": 20.6.2
     "@types/semver": 7.5.2
     "@typescript-eslint/parser": 6.7.2
