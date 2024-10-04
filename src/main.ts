@@ -1,15 +1,15 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
 import path from 'path'
-import SemVer from 'semver/classes/semver'
-import semver from 'semver/preload'
-import workspacePath from './internal/workspacePath'
+import SemVer from 'semver/classes/semver.js'
+import semver from 'semver/preload.js'
+import workspacePath from './internal/workspacePath.js'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 async function run(): Promise<void> {
     try {
-        const packageFile = core.getInput('packageFile', {required: true})
+        const packageFile = core.getInput('packageFile', { required: true })
         core.info(`Parsing ${packageFile}`)
 
         const packageAbsoluteFile = path.resolve(workspacePath, packageFile)
@@ -32,7 +32,7 @@ async function run(): Promise<void> {
         core.info(`Full version: ${fullVer}`)
         core.setOutput('version', fullVer)
 
-        const prereleaseSuffix: string = (function () {
+        const prereleaseSuffix: string = (function() {
             const prerelease = semverVersion.prerelease.join('.')
             return prerelease.length > 0 ? `-${prerelease}` : ''
         })()
