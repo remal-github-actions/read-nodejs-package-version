@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@actions/core": "1.11.1",
-    "semver": "7.7.1"
+    "semver": "7.7.2"
   },
   "devDependencies": {
     "@tsconfig/node20": "20.1.5",
